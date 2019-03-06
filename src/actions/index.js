@@ -18,7 +18,7 @@ export const getChars = () => dispatch => {
 
     .then(res => {
         console.log(res);
-        dispatch({ type: FETCH_WAS_SUCCESS, payload: res.data });
+        dispatch({ type: FETCH_WAS_SUCCESS, payload: res.data.results });
     })
     .catch(err => {
         console.log(err);

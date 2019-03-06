@@ -7,13 +7,14 @@ import { CharacterList } from "../components";
 import { getChars } from '../actions';
 
 class CharacterListView extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
   }
 
   componentDidMount() {
     // call our action
     this.props.getChars();
+    //--> currently an empty array -->> console.log(this.props.characters);
   }
 
   render() {
@@ -21,6 +22,7 @@ class CharacterListView extends React.Component {
       // return something here to indicate that you are fetching data
       return <h2>Loading Characters....</h2>
     }
+    
     return (
       <div className="CharactersList_wrapper">
         <CharacterList characters={this.props.characters} />
@@ -34,8 +36,9 @@ class CharacterListView extends React.Component {
 const mapStateToProps = state => {
   return {
     characters: state.charsReducer.characters,
-    error: state.charsReducer.error,
-    fetching: state.charsReducer.fetching
+    fetching: state.charsReducer.fetching,
+    error: state.charsReducer.error
+    
   };
 };
 
